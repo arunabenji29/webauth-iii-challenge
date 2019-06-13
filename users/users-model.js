@@ -17,12 +17,16 @@ function findBy(filter){
 }
 
 function findById(id){
-    return db('users')
+    const users =  db('users')
     .where({id})
     .first();
+
+    console.log('user added from user-model ',users)
+    return users
 }
 
 async function add(user){
+
     const [id] = await db('users').insert(user)
 
     return findById(id);
