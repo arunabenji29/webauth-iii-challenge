@@ -9,6 +9,12 @@ const server = express()
 
 server.use(helmet())
 server.use(cors())
+// server.use(cors(
+//     {
+//         credentials:true,
+//         origin:true,
+//     }
+// ))
 server.use(express.json());
 
 server.get('/',(req,res) => {
