@@ -21,9 +21,9 @@ class App extends React.Component {
     axiosWithAuth().get('http://localhost:3700/api/users')
     .then(res => {
       console.log('get users res ', res)
-      this.setState({
+      this.setState(() =>( {
         users:res.data
-      })
+      }))
     })
     .catch(error => {
       console.log(error)

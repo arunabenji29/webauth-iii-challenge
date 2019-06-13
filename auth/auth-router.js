@@ -10,11 +10,22 @@ router.post('/register', (req,res) => {
     user.password = hash
 
     Users.add(user)
-    .then(saved => {
-        res.status(200).json(saved);
+    // .then(saved => {
+    //     res.status(200).json(saved);
+    // })
+    .then(user => {
+            console.log('register endpoint server ',user)
+            const token = generateToken(user);
+
+            res.status(200).json({
+                message:`welcome ${user.username} your id is ${user.id}!`,
+                token
+            })
+        
+        
     })
     .catch(error => {
-        res.status(500).json(error)
+        res.status(500).json(error.response)
     })
 });
 
